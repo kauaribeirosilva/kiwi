@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTech - Sua Oficina de Confiança</title>
+    <style>
+        /* =========================================
+           CSS - ESTILIZAÇÃO
+           ========================================= */
+        :root {
+            --cor-primaria: #ffb703; /* Amarelo/Laranja automotivo */
+            --cor-secundaria: #f8f9fa; /* Cinza bem claro */
+            --cor-escura: #212529; /* Preto/Cinza chumbo */
+            --cor-texto: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #e9ecef;
+            color: var(--cor-texto);
+        }
+
+        /* Cabecalho e Navegação */
+        header {
+            background-color: var(--cor-escura);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            color: var(--cor-secundaria);
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--cor-primaria);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--cor-secundaria);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cor-primaria);
+        }
+
+        /* Seção Hero (Destaque Principal) */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(33, 37, 41, 0.85), rgba(33, 37, 41, 0.7)), 
+                        url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: var(--cor-secundaria);
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            color: #ced4da;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            background-color: var(--cor-primaria);
+            color: var(--cor-escura);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #fb8500;
+            transform: translateY(-3px);
+        }
+
+        /* Seção Serviços */
+        .servicos {
+            padding: 6rem 5%;
+            text-align: center;
+        }
+
+        .servicos h2 {
+            font-size: 2.5rem;
+            color: var(--cor-escura);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 320px;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--cor-primaria);
+        }
+
+        .card-info {
+            padding: 1.5rem;
+        }
+
+        .card-info h3 {
+            color: var(--cor-escura);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card-info p {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid var(--cor-primaria);
+            color: var(--cor-escura);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            background: transparent;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--cor-primaria);
+            color: var(--cor-escura);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--cor-escura);
+            color: #adb5bd;
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 5px solid var(--cor-primaria);
+        }
+
+        footer h3 {
+            color: var(--cor-secundaria);
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <a href="#" class="logo">Auto<span>Tech</span></a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#servicos">Nossos Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SEÇÃO HERO (DESTAQUE) -->
+    <section class="hero" id="inicio">
+        <h1>Especialistas no Seu Veículo</h1>
+        <p>Manutenção preventiva, diagnósticos computadorizados e mecânica em geral com transparência e garantia de qualidade. Seu carro nas melhores mãos.</p>
+        <a href="#servicos" class="btn">Agendar Revisão</a>
+    </section>
+
+    <!-- SEÇÃO SERVIÇOS -->
+    <section class="servicos" id="servicos">
+        <h2>Principais Serviços</h2>
+        <div class="card-container">
+            
+            <!-- Serviço 1 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1635788103328-91fbbf57c8d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Troca de Óleo e Filtros">
+                <div class="card-info">
+                    <h3>Troca de Óleo e Filtros</h3>
+                    <p>Mantenha o motor do seu carro protegido e rodando suavemente com nossos lubrificantes de alta performance recomendados de fábrica.</p>
+                    <button class="btn-outline" onclick="solicitarOrcamento('Troca de Óleo')">Solicitar Orçamento</button>
+                </div>
+            </div>
+
+            <!-- Serviço 2 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Alinhamento e Balanceamento">
+                <div class="card-info">
+                    <h3>Pneus e Suspensão</h3>
+                    <p>Alinhamento 3D, balanceamento, troca de amortecedores e pastilhas de freio para garantir a sua segurança na estrada.</p>
+                    <button class="btn-outline" onclick="solicitarOrcamento('Pneus e Suspensão')">Solicitar Orçamento</button>
+                </div>
+            </div>
+
+            <!-- Serviço 3 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Injeção Eletrônica e Motor">
+                <div class="card-info">
+                    <h3>Injeção e Motor</h3>
+                    <p>Diagnóstico computadorizado avançado para resolver falhas no motor, alto consumo de combustível ou luzes no painel.</p>
+                    <button class="btn-outline" onclick="solicitarOrcamento('Injeção e Motor')">Solicitar Orçamento</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer id="contato">
+        <h3>AutoTech Motors</h3>
+        <p>📍 Av. das Engrenagens, 456 - Distrito Industrial</p>
+        <p>📞 (11) 3333-4444 | 📱 WhatsApp: (11) 98888-7777</p>
+        <p>🕒 Seg a Sex: 08h às 18h | Sáb: 08h às 12h</p>
+        <br>
+        <p>&copy; 2026 AutoTech Oficina Mecânica. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- =========================================
+         JAVASCRIPT - INTERAÇÃO
+         ========================================= -->
+    <script>
+        // Função para simular solicitação de orçamento
+        function solicitarOrcamento(servico) {
+            // Cria um alerta customizado
+            alert(`🔧 Excelente! Você selecionou: ${servico}.\n\nUm consultor técnico entrará em contato em breve para agendar seu horário.`);
+            
+            // Log para simular o sistema recebendo o pedido
+            console.log(`Orçamento solicitado para o serviço: ${servico}`);
+        }
+
+        // Efeito de sombra na barra de navegação ao rolar a página
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(33, 37, 41, 0.98)';
+                header.style.boxShadow = '0 4px 15px rgba(0,0,0,0.5)';
+            } else {
+                header.style.backgroundColor = '#212529';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+            }
+        });
+    </script>
+</body>
+</html>
