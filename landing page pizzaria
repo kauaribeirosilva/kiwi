@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Napoli - A Verdadeira Pizza Italiana</title>
+    <style>
+        /* =========================================
+           CSS - ESTILIZAÇÃO
+           ========================================= */
+        :root {
+            --cor-primaria: #e63946; /* Vermelho tomate */
+            --cor-secundaria: #f1faee; /* Branco gelo */
+            --cor-escura: #1d3557; /* Azul escuro quase preto */
+            --cor-destaque: #f4a261; /* Laranja dourado */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #fafafa;
+            color: #333;
+        }
+
+        /* Cabecalho e Navegação */
+        header {
+            background-color: var(--cor-escura);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: var(--cor-primaria);
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--cor-secundaria);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--cor-secundaria);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cor-primaria);
+        }
+
+        /* Seção Hero (Destaque Principal) */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: var(--cor-secundaria);
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            background-color: var(--cor-primaria);
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #c1121f;
+            transform: scale(1.05);
+        }
+
+        /* Seção Menu */
+        .menu {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .menu h2 {
+            font-size: 2.5rem;
+            color: var(--cor-escura);
+            margin-bottom: 3rem;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 300px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 1.5rem;
+        }
+
+        .card-info h3 {
+            color: var(--cor-escura);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .preco {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--cor-primaria);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--cor-escura);
+            color: var(--cor-secundaria);
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Em um site real, você faria um menu hambúrguer aqui */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Bella<span>Napoli</span></a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#cardapio">Cardápio</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <h1>A Verdadeira Pizza Italiana</h1>
+        <p>Massa artesanal de fermentação natural, ingredientes frescos e assada em forno a lenha.</p>
+        <a href="#cardapio" class="btn">Fazer Pedido Agora</a>
+    </section>
+
+    <section class="menu" id="cardapio">
+        <h2>Nossos Clássicos</h2>
+        <div class="card-container">
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Pizza Margherita">
+                <div class="card-info">
+                    <h3>Margherita</h3>
+                    <p>Molho de tomate San Marzano, mozzarella di bufala fresca, manjericão e azeite extravirgem.</p>
+                    <span class="preco">R$ 54,90</span>
+                    <button class="btn" onclick="adicionarAoCarrinho('Margherita')">Pedir</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Pizza Pepperoni">
+                <div class="card-info">
+                    <h3>Pepperoni</h3>
+                    <p>Molho de tomate, queijo mozzarella derretido e fatias generosas de pepperoni levemente picante.</p>
+                    <span class="preco">R$ 62,90</span>
+                    <button class="btn" onclick="adicionarAoCarrinho('Pepperoni')">Pedir</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Pizza Quatro Queijos">
+                <div class="card-info">
+                    <h3>Quatro Queijos</h3>
+                    <p>Uma combinação perfeita de mozzarella, gorgonzola, parmesão e provolone.</p>
+                    <span class="preco">R$ 68,90</span>
+                    <button class="btn" onclick="adicionarAoCarrinho('Quatro Queijos')">Pedir</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contato">
+        <p>&copy; 2026 Bella Napoli Pizzaria. Todos os direitos reservados.</p>
+        <p>📍 Rua das Pizzas, 123 - Centro | 📞 (11) 99999-9999</p>
+    </footer>
+
+    <script>
+        // Função para simular a adição de uma pizza ao carrinho
+        function adicionarAoCarrinho(saborPizza) {
+            // Cria um alerta customizado no navegador
+            alert(`🍕 Excelente escolha! A pizza de ${saborPizza} foi adicionada ao seu pedido.`);
+            
+            // Aqui, em um projeto real, você integraria com o WhatsApp ou um sistema de carrinho
+            console.log(`Pedido registrado no sistema: ${saborPizza}`);
+        }
+
+        // Efeito de sombra na barra de navegação ao rolar a página
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(29, 53, 87, 0.95)';
+            } else {
+                header.style.backgroundColor = '#1d3557';
+            }
+        });
+    </script>
+</body>
+</html>
