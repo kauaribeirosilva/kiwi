@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nigga Burguer - O Sabor que Vicia</title>
+    <style>
+        /* =========================================
+           CSS - ESTILIZAÇÃO
+           ========================================= */
+        :root {
+            --cor-primaria: #ffc300; /* Amarelo Mostarda */
+            --cor-secundaria: #d90429; /* Vermelho Ketchup */
+            --cor-fundo: #f8f9fa; /* Off-white */
+            --cor-escura: #2b2d42; /* Grafite escuro */
+            --cor-texto: #4a4e69;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+        }
+
+        /* Cabeçalho e Navegação */
+        header {
+            background-color: var(--cor-secundaria);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--cor-primaria);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9.5rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cor-primaria);
+        }
+
+        /* Seção Hero (Destaque Principal) */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(43, 45, 66, 0.75), rgba(43, 45, 66, 0.75)), 
+                        url('https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: #fff;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            color: #f1faee;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background-color: var(--cor-primaria);
+            color: var(--cor-escura);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 195, 0, 0.4);
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            color: var(--cor-secundaria);
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Seção Cardápio */
+        .cardapio {
+            padding: 6rem 5%;
+            text-align: center;
+        }
+
+        .cardapio h2 {
+            font-size: 2.5rem;
+            color: var(--cor-escura);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .subtitulo {
+            color: #6c757d;
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            width: 320px;
+            transition: transform 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 2rem 1.5rem;
+        }
+
+        .card-info h3 {
+            color: var(--cor-escura);
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .card-info p {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            height: 60px; /* Mantém os botões alinhados */
+        }
+
+        .preco {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--cor-secundaria);
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-pedir {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--cor-secundaria);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-pedir:hover {
+            background-color: var(--cor-escura);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--cor-escura);
+            color: #fff;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        footer h3 {
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <a href="#" class="logo">Nigga<span>Burguer</span></a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#cardapio">Cardápio</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SEÇÃO HERO (DESTAQUE) -->
+    <section class="hero" id="inicio">
+        <h1>Bateu aquela fome?</h1>
+        <p>Hambúrgueres artesanais grelhados no fogo como churrasco, batata frita super crocante e aquele milkshake cremoso que você respeita.</p>
+        <a href="#cardapio" class="btn">Matar a Fome</a>
+    </section>
+
+    <!-- SEÇÃO CARDÁPIO -->
+    <section class="cardapio" id="cardapio">
+        <h2>Os Mais Pedidos</h2>
+        <p class="subtitulo">Escolha o seu favorito e monte o seu combo</p>
+        
+        <div class="card-container">
+            
+            <!-- Lanche 1 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Cheddar Bacon Burger">
+                <div class="card-info">
+                    <h3>Monster Cheddar</h3>
+                    <p>Burger de 180g, muito cheddar cremoso, fatias de bacon crocante e maionese artesanal da casa.</p>
+                    <span class="preco">R$ 32,90</span>
+                    <button class="btn-pedir" onclick="adicionarLanche('Monster Cheddar')">Adicionar</button>
+                </div>
+            </div>
+
+            <!-- Lanche 2 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Combo Supremo">
+                <div class="card-info">
+                    <h3>Combo Supremo</h3>
+                    <p>O clássico Smash Burger duplo com queijo, acompanhado de batata frita média e refrigerante lata.</p>
+                    <span class="preco">R$ 45,90</span>
+                    <button class="btn-pedir" onclick="adicionarLanche('Combo Supremo')">Adicionar</button>
+                </div>
+            </div>
+
+            <!-- Lanche 3 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Frango Frito">
+                <div class="card-info">
+                    <h3>Frango Frito</h3>
+                    <p>uma porção de frango frito para entrar na essencia.</p>
+                    <span class="preco">R$ 24,90</span>
+                    <button class="btn-pedir" onclick="adicionarLanche('Batata Suprema')">Adicionar</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer id="contato">
+        <h3>Burger Mania Fast Food</h3>
+        <p>📍 Rua dos Lanches, 789 - Bairro Centro</p>
+        <p>🏍️ Delivery Rápido via WhatsApp: (11) 95555-4444</p>
+        <p>🕒 Domingo a Quinta: 18h às 23h30 | Sexta e Sábado: 18h às 01h</p>
+        <br>
+        <p>&copy; 2026 Burger Mania. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- =========================================
+         JAVASCRIPT - INTERAÇÃO
+         ========================================= -->
+    <script>
+        // Função para simular a adição do item
+        function adicionarLanche(nomeLanche) {
+            alert(`🍔 Pedido anotado! O item "${nomeLanche}" foi adicionado ao seu carrinho.`);
+            console.log(`Item adicionado: ${nomeLanche}`);
+        }
+
+        // Altera sutilmente o estilo do cabeçalho na rolagem
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = '#b7031d'; // Tom de vermelho um pouco mais escuro
+                header.style.padding = '0.8rem 5%';
+            } else {
+                header.style.backgroundColor = '#d90429';
+                header.style.padding = '1rem 5%';
+            }
+        });
+    </script>
+</body>
+</html>
