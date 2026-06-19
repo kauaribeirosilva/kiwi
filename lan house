@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Arena - Lan House & eSports</title>
+    <style>
+        /* =========================================
+           CSS - ESTILIZAÇÃO (VIBE GAMER/NEON)
+           ========================================= */
+        :root {
+            --cor-primaria: #00f0ff; /* Ciano Neon */
+            --cor-secundaria: #9d4edd; /* Roxo Neon */
+            --cor-fundo: #0a0b10; /* Preto Azulado Profundo */
+            --cor-card: #141722; /* Cinza Escuro para os Cards */
+            --cor-texto: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            overflow-x: hidden;
+        }
+
+        /* Cabeçalho e Navegação */
+        header {
+            background-color: rgba(10, 11, 16, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--cor-primaria);
+        }
+
+        .logo span {
+            color: var(--cor-secundaria);
+            text-shadow: 0 0 10px var(--cor-secundaria);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cor-primaria);
+            text-shadow: 0 0 8px var(--cor-primaria);
+        }
+
+        /* Seção Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 11, 16, 0.85), rgba(10, 11, 16, 0.9)), 
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            color: #94a3b8;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--cor-primaria), var(--cor-secundaria));
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(157, 78, 221, 0.8);
+        }
+
+        /* Seção Estações de Jogo */
+        .estacoes {
+            padding: 6rem 5%;
+            text-align: center;
+        }
+
+        .estacoes h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: var(--cor-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            width: 320px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--cor-primaria);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 1.5rem;
+        }
+
+        .card-info h3 {
+            color: #fff;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .card-info p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .preco {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--cor-primaria);
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-card {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 2px solid var(--cor-primaria);
+            color: var(--cor-primaria);
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-card:hover {
+            background: var(--cor-primaria);
+            color: var(--cor-fundo);
+            box-shadow: 0 0 15px var(--cor-primaria);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #050608;
+            color: #64748b;
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 2px solid rgba(157, 78, 221, 0.3);
+        }
+
+        footer h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Nexus<span>Arena</span></a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#estacoes">Estações</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <h1>Eleve seu Jogo ao Próximo Nível</h1>
+        <p>PCs de última geração, monitores de 240Hz, periféricos profissionais e a internet mais rápida da região. Sua gameplay sem lag começa aqui.</p>
+        <a href="#estacoes" class="btn">Garantir Minha Vaga</a>
+    </section>
+
+    <section class="estacoes" id="estacoes">
+        <h2>Escolha Seu Setup</h2>
+        <div class="card-container">
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1547119957-637f8679db1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Setup PC Pro">
+                <div class="card-info">
+                    <h3>Zona PC Pro</h3>
+                    <p>RTX 4070, Core i7, 32GB RAM e Monitor 240Hz. Perfeito para jogos competitivos como CS2, Valorant e LoL.</p>
+                    <span class="preco">R$ 15,00 / hora</span>
+                    <button class="btn-card" onclick="reservarLugar('Zona PC Pro')">Reservar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Console VIP">
+                <div class="card-info">
+                    <h3>Console VIP Lounge</h3>
+                    <p>PlayStation 5 e Xbox Series X em TVs OLED 4K de 55" com sofás articulados super confortáveis para você e sua galera.</p>
+                    <span class="preco">R$ 25,00 / hora</span>
+                    <button class="btn-card" onclick="reservarLugar('Console VIP Lounge')">Reservar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Simulador de Corrida">
+                <div class="card-info">
+                    <h3>Cockpit Simulador</h3>
+                    <p>Volante Direct Drive, pedais profissionais e banco concha realístico para o máximo de imersão em Assetto Corsa e F1.</p>
+                    <span class="preco">R$ 35,00 / hora</span>
+                    <button class="btn-card" onclick="reservarLugar('Cockpit Simulador')">Reservar</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contato">
+        <h3>Nexus Arena eSports</h3>
+        <p>📍 Av. Cyberpunk, 777 - Bairro Neon (Próximo ao Metrô)</p>
+        <p>📱 WhatsApp/Reservas: (11) 97777-8888</p>
+        <p>🕒 Aberto todos os dias: 10h às 04h (Corujão de Sex e Sáb até as 08h)</p>
+        <br>
+        <p>&copy; 2026 Nexus Arena. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Função para simular a reserva de uma estação
+        function reservarLugar(estacao) {
+            alert(`🎮 GG WP! Você escolheu a área: ${estacao}.\n\nSeu setup foi pré-reservado por 15 minutos. Compareça ao balcão para validar.`);
+            console.log(`Reserva solicitada para: ${estacao}`);
+        }
+
+        // Mudança dinâmica na transparência do cabeçalho ao rolar a página
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(10, 11, 16, 0.98)';
+                header.style.borderBottom = '2px solid rgba(157, 78, 221, 0.4)';
+            } else {
+                header.style.backgroundColor = 'rgba(10, 11, 16, 0.9)';
+                header.style.borderBottom = '2px solid rgba(0, 240, 255, 0.2)';
+            }
+        });
+    </script>
+</body>
+</html>
